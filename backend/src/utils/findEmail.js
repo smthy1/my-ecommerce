@@ -1,4 +1,4 @@
-import User from "../user/userModel.js";
+import User from "../models/userModel.js";
 import connectionDb from "../config/connectionDb.js";
 
 const findEmail = async (email) => {

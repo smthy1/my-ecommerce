@@ -27,12 +27,11 @@ const createUser = async (name, email, password) => {
     }
 }
 
-
 const login = async (email, password) => {
     await connectionDb();
 
     try {
-        const query = findEmail(email);
+        const query = await findEmail(email);
         if(!query) {
             return { erro: "Email não cadastrado" };
         }
@@ -45,13 +44,11 @@ const login = async (email, password) => {
         if(!compare) {
             return { erro: "Credenciais inválidas." };
         }
-
-        return { message: "Credenciais válidas." };
+        
+        return { message: "Credenciais válidas.", userId: userCredentials._id, username: userCredentials.name };
     } catch (err) {
         return { erro: err };
     }
 }
-
-const updateCart = async ()
 
 export { createUser, login }
